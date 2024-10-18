@@ -8,105 +8,110 @@ using Microsoft.Graph;
 using Microsoft.JSInterop;
 using Microsoft.SemanticKernel;
 
-namespace BlazorAI.Components.Pages
+namespace BlazorAI.Components.Pages;
+
+public partial class Chat
 {
-	public partial class Chat
+	#pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+	#pragma warning disable SKEXP0050 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+	#pragma warning disable SKEXP0010 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+	#pragma warning disable SKEXP0040 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+	#pragma warning disable SKEXP0020 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+
+	private const int MIN_ROWS = 2;
+	private const int MAX_ROWS = 6;
+	private string newMessage = string.Empty;
+	private int textRows = 0;
+	bool loading = false;
+	private FluentButton submitButton;
+	private FluentTextArea inputTextArea;
+	private int messagesLastScroll = 0;
+	private bool displayToolMessages = false;
+
+	[Inject]
+	private IKeyCodeService KeyCodeService { get; set; }
+
+
+	[Inject]
+	public AppState AppState { get; set; } = null!;
+
+
+	[Inject]
+	private GraphServiceClient GraphServiceClient { get; set; } = null!;
+
+	[Inject]
+	IJSRuntime JsRuntime { get; set; } = null!;
+
+	private MarkdownPipeline pipeline = new MarkdownPipelineBuilder()
+		.UseAdvancedExtensions()
+		.UseBootstrap()
+		.UseEmojiAndSmiley()
+		.Build();
+
+	protected override void OnInitialized()
 	{
-		private const int MIN_ROWS = 2;
-		private const int MAX_ROWS = 6;
-		private string newMessage = string.Empty;
-		private int textRows = 0;
-		bool loading = false;
-		private FluentButton submitButton;
-		private FluentTextArea inputTextArea;
-		private int messagesLastScroll = 0;
-		private bool displayToolMessages = false;
+		// This is used by Blazor to capture the user input for shortcut keys.
+		KeyCodeService.RegisterListener(OnKeyDownAsync);
 
-		[Inject]
-		private IKeyCodeService KeyCodeService { get; set; }
+		// Initialize the chat history here
+		InitializeSemanticKernel();
+	}
 
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
+		await JsRuntime.InvokeVoidAsync("highlightCode");
 
-		[Inject]
-		public AppState AppState { get; set; } = null!;
-
-
-		[Inject]
-		private GraphServiceClient GraphServiceClient { get; set; } = null!;
-
-		[Inject]
-		IJSRuntime JsRuntime { get; set; } = null!;
-
-		private MarkdownPipeline pipeline = new MarkdownPipelineBuilder()
-			.UseAdvancedExtensions()
-			.UseBootstrap()
-			.UseEmojiAndSmiley()
-			.Build();
-
-		protected override void OnInitialized()
+		if (!firstRender && chatHistory != null && chatHistory.Any() && messagesLastScroll != chatHistory.Count)
 		{
-			// This is used by Blazor to capture the user input for shortcut keys.
-			KeyCodeService.RegisterListener(OnKeyDownAsync);
-
-			// Initialize the chat history here
-			InitializeSemanticKernel();
+			messagesLastScroll = chatHistory.Count;
+			await JsRuntime.InvokeVoidAsync("scrollToBottom");
 		}
+	}
 
-		protected override async Task OnAfterRenderAsync(bool firstRender)
+	protected void AddRequiredServices(IKernelBuilder kernelBuilder, IConfiguration configuration)
+	{
+		kernelBuilder.Services.AddHttpClient();
+		kernelBuilder.Services.Configure<LogicAppOptions>(Configuration.GetSection("AzureAd"));
+		kernelBuilder.Services.AddSingleton<LogicAppAuthorizationExtension>();
+		kernelBuilder.Services.AddHttpClient("LogicAppHttpClient")
+			.AddHttpMessageHandler<LogicAppAuthorizationExtension>();
+	}
+
+	protected string MessageInput
+	{
+		get => newMessage;
+		set
 		{
-			await base.OnAfterRenderAsync(firstRender);
-			await JsRuntime.InvokeVoidAsync("highlightCode");
+			newMessage = value;
+			CalculateTextRows(value);
+		}
+	}
 
-			if (!firstRender && chatHistory != null && chatHistory.Any() && messagesLastScroll != chatHistory.Count)
+	private void ClearChat()
+	{
+		chatHistory?.Clear();
+	}
+
+	private void CalculateTextRows(string value)
+	{
+		textRows = Math.Max(value.Split('\n').Length, value.Split('\r').Length);
+		textRows = Math.Max(textRows, MIN_ROWS);
+		textRows = Math.Min(textRows, MAX_ROWS);
+	}
+
+	private async Task OnKeyDownAsync(FluentKeyCodeEventArgs args)
+	{
+		if (args.CtrlKey && args.Value == "Enter")
+		{
+			Console.WriteLine("Ctrl+Enter Pressed");
+			await InvokeAsync(async () =>
 			{
-				messagesLastScroll = chatHistory.Count;
-				await JsRuntime.InvokeVoidAsync("scrollToBottom");
-			}
-		}
-
-		protected void AddRequiredServices(IKernelBuilder kernelBuilder, IConfiguration configuration)
-		{
-			kernelBuilder.Services.AddHttpClient();
-			kernelBuilder.Services.Configure<LogicAppOptions>(Configuration.GetSection("AzureAd"));
-			kernelBuilder.Services.AddSingleton<LogicAppAuthorizationExtension>();
-			kernelBuilder.Services.AddHttpClient("LogicAppHttpClient")
-				.AddHttpMessageHandler<LogicAppAuthorizationExtension>();
-		}
-
-		protected string MessageInput
-		{
-			get => newMessage;
-			set
-			{
-				newMessage = value;
-				CalculateTextRows(value);
-			}
-		}
-
-		private void ClearChat()
-		{
-			chatHistory?.Clear();
-		}
-
-		private void CalculateTextRows(string value)
-		{
-			textRows = Math.Max(value.Split('\n').Length, value.Split('\r').Length);
-			textRows = Math.Max(textRows, MIN_ROWS);
-			textRows = Math.Min(textRows, MAX_ROWS);
-		}
-
-		private async Task OnKeyDownAsync(FluentKeyCodeEventArgs args)
-		{
-			if (args.CtrlKey && args.Value == "Enter")
-			{
-				Console.WriteLine("Ctrl+Enter Pressed");
-				await InvokeAsync(async () =>
-				{
-					StateHasChanged();
-					await Task.Delay(180);
-					Console.WriteLine("Value in TextArea: {0}", MessageInput);
-					await submitButton.OnClick.InvokeAsync();
-				});
-			}
+				StateHasChanged();
+				await Task.Delay(180);
+				Console.WriteLine("Value in TextArea: {0}", MessageInput);
+				await submitButton.OnClick.InvokeAsync();
+			});
 		}
 	}
 }
