@@ -1,0 +1,73 @@
+@inherits UserProfileBase
+
+<AuthorizeView>
+    <Authorized>
+        <FluentStack HorizontalAlignment="@HorizontalAlignment.End"
+                     VerticalAlignment="@VerticalAlignment.Center"
+                     Style="height: 48px; padding-inline-end: 10px; ">
+            @if (PhotoBytes != null && PhotoBytes.Length > 0)
+            {
+                <FluentProfileMenu Initials="@UserInitials"
+                                   Image="@PhotoBytes"
+                                   HeaderLabel="@_user.CompanyName"
+                                   Status="@PresenceStatus.Available"
+                                   Style="color: var(--fill-color); --fluent-profile-menu-hover: var(--neutral-stroke-focus); padding: 4px;">
+                    <StartTemplate>
+                        <FluentLabel Color="Color.Fill">@_user.DisplayName</FluentLabel>
+                    </StartTemplate>
+                    <HeaderTemplate>
+                        <FluentLabel Typo="@Typography.Header">Welcome</FluentLabel>
+                    </HeaderTemplate>
+                    <ChildContent>
+                        <div style="width: 250px; height: 80px">
+                            <FluentLabel Typo="@Typography.Header" Style="font-weight: bold;">@_user.DisplayName</FluentLabel>
+                            <FluentLabel>@_user.Mail</FluentLabel>
+                        </div>
+                    </ChildContent>
+                    <FooterTemplate>
+                        <FluentStack>
+                            <FluentSpacer />
+                            <FluentAnchor Appearance="Appearance.Stealth"
+                                          Href="MicrosoftIdentity/Account/SignOut">Logout</FluentAnchor>
+                        </FluentStack>
+                    </FooterTemplate>
+                </FluentProfileMenu>
+            } 
+            else {
+            <FluentProfileMenu Initials="@UserInitials"
+                               HeaderLabel="@_user.CompanyName"
+                               Status="@PresenceStatus.Available"
+                               Style="--fluent-profile-menu-hover: var(--neutral-stroke-focus); padding: 4px;">
+                <StartTemplate>
+                    @_user.DisplayName
+                </StartTemplate>
+                <HeaderTemplate>
+                    <FluentLabel Typo="@Typography.Header">Welcome</FluentLabel>
+                </HeaderTemplate>
+                <ChildContent>
+                    <div style="width: 250px; height: 80px">
+                        <FluentLabel Typo="@Typography.Header" Style="font-weight: bold;">@_user.DisplayName</FluentLabel>
+                        <FluentLabel>@_user.Mail</FluentLabel>
+                    </div>
+                </ChildContent>
+                <FooterTemplate>
+                    <FluentStack>
+                        <FluentSpacer />
+                        <FluentAnchor Appearance="Appearance.Stealth"
+                                      Href="MicrosoftIdentity/Account/SignOut">Logout</FluentAnchor>
+                    </FluentStack>
+                </FooterTemplate>
+            </FluentProfileMenu>
+            }
+            
+        </FluentStack>
+    </Authorized>
+    <NotAuthorized>
+        <FluentAnchor Appearance="Appearance.Stealth"
+                      Href="MicrosoftIdentity/Account/SignIn">Login</FluentAnchor>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
