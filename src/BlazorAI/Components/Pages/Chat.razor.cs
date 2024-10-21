@@ -29,15 +29,7 @@ public partial class Chat
 
 		// Challenge 02 - Configure Semantic Kernel
 		var kernelBuilder = Kernel.CreateBuilder();
-
-		// Challenge 02 - Semantic Kernel Logging configuration
-		kernelBuilder.Services.AddLogging(b =>
-		{
-			b.AddConfiguration(Configuration.GetSection("Logging"));
-			b.SetMinimumLevel(LogLevel.Debug);
-			b.AddConsole();
-		});
-
+		
 		// Challenge 02 - Add OpenAI Chat Completion
 		kernelBuilder.AddAzureOpenAIChatCompletion(
 			Configuration["AOI_DEPLOYMODEL"]!,

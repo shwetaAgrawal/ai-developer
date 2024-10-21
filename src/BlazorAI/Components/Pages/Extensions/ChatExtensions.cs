@@ -10,14 +10,14 @@ using Microsoft.SemanticKernel;
 
 namespace BlazorAI.Components.Pages;
 
+#pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+#pragma warning disable SKEXP0050 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+#pragma warning disable SKEXP0010 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+#pragma warning disable SKEXP0040 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+#pragma warning disable SKEXP0020 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+
 public partial class Chat
 {
-	#pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-	#pragma warning disable SKEXP0050 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-	#pragma warning disable SKEXP0010 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-	#pragma warning disable SKEXP0040 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-	#pragma warning disable SKEXP0020 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-
 	private const int MIN_ROWS = 2;
 	private const int MAX_ROWS = 6;
 	private string newMessage = string.Empty;
@@ -31,16 +31,17 @@ public partial class Chat
 	[Inject]
 	private IKeyCodeService KeyCodeService { get; set; }
 
-
 	[Inject]
-	public AppState AppState { get; set; } = null!;
-
+	IJSRuntime JsRuntime { get; set; } = null!;
 
 	[Inject]
 	private GraphServiceClient GraphServiceClient { get; set; } = null!;
 
 	[Inject]
-	IJSRuntime JsRuntime { get; set; } = null!;
+	public AppState AppState { get; set; } = null!;
+
+	[Inject]
+	private ILoggerFactory LoggerFactory { get; set; } = null!;
 
 	private MarkdownPipeline pipeline = new MarkdownPipelineBuilder()
 		.UseAdvancedExtensions()
@@ -48,13 +49,23 @@ public partial class Chat
 		.UseEmojiAndSmiley()
 		.Build();
 
-	protected override void OnInitialized()
+	protected override async Task OnInitializedAsync()
 	{
 		// This is used by Blazor to capture the user input for shortcut keys.
 		KeyCodeService.RegisterListener(OnKeyDownAsync);
 
 		// Initialize the chat history here
-		InitializeSemanticKernel();
+		await InitializeSemanticKernel();
+	}
+
+	protected void AddRequiredServices(IKernelBuilder kernelBuilder, IConfiguration configuration)
+	{
+		kernelBuilder.Services.AddSingleton(LoggerFactory);
+		kernelBuilder.Services.AddHttpClient();
+		kernelBuilder.Services.Configure<LogicAppOptions>(Configuration.GetSection("AzureAd"));
+		kernelBuilder.Services.AddSingleton<LogicAppAuthorizationExtension>();
+		kernelBuilder.Services.AddHttpClient("LogicAppHttpClient")
+			.AddHttpMessageHandler<LogicAppAuthorizationExtension>();
 	}
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -67,15 +78,6 @@ public partial class Chat
 			messagesLastScroll = chatHistory.Count;
 			await JsRuntime.InvokeVoidAsync("scrollToBottom");
 		}
-	}
-
-	protected void AddRequiredServices(IKernelBuilder kernelBuilder, IConfiguration configuration)
-	{
-		kernelBuilder.Services.AddHttpClient();
-		kernelBuilder.Services.Configure<LogicAppOptions>(Configuration.GetSection("AzureAd"));
-		kernelBuilder.Services.AddSingleton<LogicAppAuthorizationExtension>();
-		kernelBuilder.Services.AddHttpClient("LogicAppHttpClient")
-			.AddHttpMessageHandler<LogicAppAuthorizationExtension>();
 	}
 
 	protected string MessageInput

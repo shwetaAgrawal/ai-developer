@@ -1,3 +1,4 @@
+using AspNetCore.SignalR.OpenTelemetry;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,14 +48,28 @@ public static class Extensions
             {
                 metrics.AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
-                    .AddRuntimeInstrumentation();
+                    .AddRuntimeInstrumentation()
+                    .AddMeter("Microsoft.SemanticKernel*");
             })
             .WithTracing(tracing =>
             {
                 tracing.AddAspNetCoreInstrumentation()
                     // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
                     //.AddGrpcClientInstrumentation()
-                    .AddHttpClientInstrumentation();
+                    .AddHttpClientInstrumentation((options) =>
+                    {
+                        options.EnrichWithHttpRequestMessage = (activity, httpRequestMessage) =>
+                        {
+                            activity.SetTag("http.request.content", httpRequestMessage.Content?.ReadAsStringAsync().Result);
+                        };
+
+                        options.EnrichWithHttpResponseMessage = (activity, httpResponseMessage) =>
+                        {
+                            activity.SetTag("http.response.content", httpResponseMessage.Content?.ReadAsStringAsync().Result);
+                        };
+                    })
+                    .AddSignalRInstrumentation()
+                    .AddSource("Microsoft.SemanticKernel*");
             });
 
         builder.AddOpenTelemetryExporters();
