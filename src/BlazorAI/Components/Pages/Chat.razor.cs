@@ -39,7 +39,7 @@ public partial class Chat
 		// Challenge 04 - Services Required By Logic App
 		AddRequiredServices(kernelBuilder, Configuration);
 
-		//// Challenge 05 - Register Search Index
+		// Challenge 05 - Register Azure OpenAI Text Embeddings Generation
 
 
 		// Challenge 05 - Register Search Index

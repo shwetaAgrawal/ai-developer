@@ -77,8 +77,7 @@ Using the Graph Service Client, we can simplify the process of managing MS Graph
 1. Add the following code to ***Add Plugins*** method.
 
     ```csharp
-    kernel.Plugins.AddFromObject(new MsGraphPlugin(GraphServiceClient, 
-        kernel.Services.GetRequiredService<IHttpClientFactory>()), "MsGraphPlugin");
+    kernel.Plugins.AddFromObject(new MsGraphPlugin(GraphServiceClient, kernel.Services.GetRequiredService<IHttpClientFactory>(), AppState), "MsGraphPlugin");
     ```
 
 1. Update the appsettings.json file with the new scope for the MS Graph Plugin.
