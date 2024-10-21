@@ -10,7 +10,7 @@ Content filters are essential in ensuring that your AI models meet your organiza
 
 ## Pre-requisites
 
-1. [Access to Azure OpenAI Studio](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/access-studio) (See step 1 below).
+1. [Access to Azure OpenAI Studio](https://oai.azure.com) (See step 1 below).
 2. An Azure OpenAI resource created in an earlier challenge.
 
 > NOTE: Make sure you have access to the Azure OpenAI Studio and an existing Azure OpenAI resource, as these are required to complete this challenge.
