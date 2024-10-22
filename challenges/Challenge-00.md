@@ -45,10 +45,10 @@ If you do not have GitHub Copilot, you can still complete the challenges. Howeve
  
 ##### Clone the Student Resources to your Local Workstation
 
-From a directory where you want to store the resources, clone the [repository](https://github.com/RandyPatterson/AOAI_Student). You can do this by running the following command in your terminal or command prompt:
+From a directory where you want to store the resources, clone the [repository](https://github.com/microsoft/ai-developer). You can do this by running the following command in your terminal or command prompt:
 
   ```powershell
-  git clone https://github.com/RandyPatterson/AOAI_Student.git
+  git clone https://github.com/microsoft/ai-developer.git
   ```
 
 The rest of the challenges will refer to the relative paths inside the Git Repository where you can find the various resources to complete the challenges.

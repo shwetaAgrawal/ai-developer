@@ -70,6 +70,16 @@ This challenge will guide you through configuring and testing content filters us
 - Consider how these filters could be integrated into your broader AI application or workflow.
 - Think about scenarios where custom filters might be essential for maintaining ethical standards. Keep these in mind when developing with AI solutions in the future.
 
+:bulb: The OpenAI Service will thrown an exception sometimes when your user's request is rejected due to content safety filters. You can trap and handle that exception and handle it to let the user know why they didn't get a response. :bulb:
+
+```csharp
+catch (HttpOperationException e)
+{
+	if (e.ResponseContent != null)
+		chatHistory.AddAssistantMessage(e.ResponseContent);
+}
+```
+
 ## Success Criteria
 
 1. You have successfully navigated the Azure OpenAI Studio and adjusted the default content filter settings.
