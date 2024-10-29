@@ -1,4 +1,4 @@
-### [< Back to Challenge](../../Challenge-04.md) - **[Home ](../../../README.md)** [>]()
+### [< Back to Challenge](./Challenge-04.md) - **[Home ](./README.md)** [>]()
 
 # Challenge 04 Pre-requisites - Setup Azure Logic Apps
 
@@ -25,16 +25,16 @@ This step will allow the App Service which hosts the Logic App to accept anonymo
 
 1. In the Logic App under development tools, click on `Advanced Tools` then `Go`.
 
-    ![Anonymous Access](../images/anonymousaccess.png)
+    ![Anonymous Access](./Resources/images/anonymousaccess.png)
 
 1. Click on `Debug Console` then `CMD`.
 1. Navigate to `site/wwwroot` and edit the file called `host.json`.
 
-    ![Kudu](../images/kudu.png)
+    ![Kudu](./Resources/images/kudu.png)
 
 1. Click the edit icon for the host.json file.
 
-    ![Edit](../images/edit.png)
+    ![Edit](./Resources/images/edit.png)
 
 1. Replace all the code in the file with the code below and click on `Save`.
 
@@ -77,10 +77,10 @@ This step will allow the App Service which hosts the Logic App to accept anonymo
 This step will will be used to give users and applications permissions to the Logic App.
 
 1. Navigate to the [Entra](https://entra.microsoft.com/) website and sign in with your Microsoft account.
-1. Click on `App Registrations` then select the previously created Azure Open AI app registration. If you have forgotten what it is, reference [Entra Pre-Req](../../Challenge-02.md) from Challenge 2.
+1. Click on `App Registrations` then select the previously created Azure Open AI app registration. If you have forgotten what it is, reference [Entra Pre-Req](./Challenge-02-Entra.md) from Challenge 2.
 1. Use this image as a reference to find the App Registration. Added a Scope for the Logic App and copy the Application URI.
 
-    ![Scope](../images/scope.png)
+    ![Scope](./Resources/images/scope.png)
 
     1. Under Expose an API click on `Add a scope`.
     1. Fill in the fields with the following information and click on `Add scope`.
@@ -124,47 +124,47 @@ This will allow the Logic App to accept tokens from the App Registration.
 1. Under `Workflow` click on `Workflows` then click on `Add`.
 1. Give it a name like `GetWorkItems` and click on `Stateless` then `Create`.
 1. Navigate to your newly created workflow.
-    ![Navigate to Workflow](../images/navigate_workflow.png)
+    ![Navigate to Workflow](./Resources/images/navigate_workflow.png)
 1. In the Overview tab turn on `Enable Debug Mode`.
 
-    ![Debug Mode](../images/debugmode.png)
+    ![Debug Mode](./Resources/images/debugmode.png)
 
 1. Expand Developer, Click on `Designer` then click on `Add a trigger`.
 
-    ![Add Trigger](../images/addtrigger.png)
+    ![Add Trigger](./Resources/images/addtrigger.png)
 
 1. Search for `Request` and click on `When an HTTP request is received`.
 1. Change the Verb to Post.
 
-    ![Post](../images/post.png)
+    ![Post](./Resources/images/post.png)
 
 1. Next click on `Add an action` and search for `Azure DevOps` then click on `Get query results`. In the future you can swap this out for a different action. Right now we are getting you to a working Logic App.
 
-    ![Add an Action](../images/addanaction.png)
+    ![Add an Action](./Resources/images/addanaction.png)
 
     :bulb: You may need to select "See more" when searching for Azure DevOps
 
-    ![See More](../images/seemore.png)
+    ![See More](./Resources/images/seemore.png)
 
 1. Click on `Sign in`, if you have a popup blocker you might have to allow popups.
 
-    ![Popup Blocker](../images/popupblocker.png)
+    ![Popup Blocker](./Resources/images/popupblocker.png)
 
 1. Select the organization and project you created earlier and then navigate to the `Assigned to me` query as seen below. Or use any query you like that is available in the Azure DevOps project.
 
-    ![Assigned Tome](../images/assignedtome.png)
+    ![Assigned Tome](./Resources/images/assignedtome.png)
 
 1. Click on `Add an action` and search for `Request` then click on `Response`.
 
-    ![Responsd](../images/respond.png)
+    ![Responsd](./Resources/images/respond.png)
 
 1. In the body text field we will use dynamic content to add the `Body` from the `Get query results` action to the `Body` of the `Response` action. Click the Lightning bolt below and select `Body`
 
-    ![Response DC](../images/responsedc.png)
+    ![Response DC](./Resources/images/responsedc.png)
 
 1. Save your Logic App. Now a url will be generated on the `When an HTTP request is received` trigger. Copy this url. Paste it in a browser or HTTP client like Postman to test the Logic App.
 
-    ![Test](../images/test.png)
+    ![Test](./Resources/images/test.png)
 
 1. Lastly, you will need the swagger URI for the challenge. Using the URL you copied from the last step, replace everything after `.net/` with `swagger.json`. This will give you the swagger URI for the Logic App. Here is an example:
 
@@ -181,4 +181,4 @@ This will allow the Logic App to accept tokens from the App Registration.
 1. Successfully create a new Logic App in the Azure Portal.
 1. Successfully call the Logic App from a HTTP client like Postman.
 
-### **[Next](../../Challenge-04.md)** [>]()
+### **[Next](./Challenge-04.md)** [>]()

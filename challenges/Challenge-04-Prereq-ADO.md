@@ -1,4 +1,4 @@
-### [< Back to Challenge](../../Challenge-04.md) - [Next>](../../Challenge-04-Prereq-LogicApp.md)
+### [< Back to Challenge](./Challenge-04.md) - [Next >](./Challenge-04-Prereq-LogicApp.md)
 
 # Challenge 04 Pre-requisites - Setup of Azure DevOps
 
@@ -10,15 +10,15 @@
 1. Fill in the required fields and click on `Continue`.
 1. Click on `Organization settings`.
 
-    ![Organization Settings](../images/org.png)
+    ![Organization Settings](./Resources/images/org.png)
 
 2. Under `Policies` turn on `Third-party application access via OAuth`.
 
-    ![Policy](../images/policy.png)
+    ![Policy](./Resources/images/policy.png)
 
 3. Under Pipelines turn off `Disable creation of classic build pipelines` and `Disable creation of classic release pipelines`.
 
-    ![Classic Pipelines](../images/classicpipelines.png)
+    ![Classic Pipelines](./Resources/images/classicpipelines.png)
 
 ## Azure DevOps Demo Generator
 
@@ -27,7 +27,7 @@
 1. Give it a name and select the organization you created.
 1. Check the box, click on `Create Project`.
 
-    ![Create Project](../images/createproject.png)
+    ![Create Project](./Resources/images/createproject.png)
 
 2. Once this is done, click on `Navigate to project`.
 
@@ -43,7 +43,7 @@
 
 1. Final Result:
 
-    ![ADO Query](../images/ADOQuery.png)
+    ![ADO Query](./Resources/images/ADOQuery.png)
 
 ## Success Criteria
 
@@ -51,4 +51,4 @@
 1. Verify that the project has mock work items, repos, pipelines, and boards.
 1. Verify that you created a query for work items.
 
-### [< Back to Challenge](../../Challenge-04.md) - [Next>](../../Challenge-04-Prereq-LogicApp.md)
+### [< Back to Challenge](./Challenge-04.md) - [Next>](./Challenge-04-Prereq-LogicApp.md)
