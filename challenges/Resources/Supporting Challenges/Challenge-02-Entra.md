@@ -1,4 +1,4 @@
-### [< Back to Challenge 2](./Challenge-02.md)
+### [< Back to Challenge 2](../../Challenge-02.md) - [Next Pre-requisite >](../../Challenge-02-Reference-App.md)
 
 # Creating Application Registration in Entra
 
@@ -11,17 +11,17 @@ This sample demonstrates how to build a Blazor Server web application that signs
 To complete registration, provide the application a name and specify the supported account types. Once registered, the application **Overview** pane displays the identifiers needed in the application source code.
 
 1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com).
-1. If you have access to multiple tenants, use the **Settings** ![alt text](./Resources/images/admin-center-settings-icon.png)  in the top menu to switch to the tenant in which you want to register the application from the **Directories + subscriptions** menu.
+1. If you have access to multiple tenants, use the **Settings** ![alt text](../images/admin-center-settings-icon.png)  in the top menu to switch to the tenant in which you want to register the application from the **Directories + subscriptions** menu.
 1. Browse to **Identity** > **Applications** > **App registrations**, select **New registration**.
 1. Enter a **Name** for the application, such as *identity-client-web-app*.
 1. For **Supported account types**, select **Accounts in this organizational directory only**. For information on different account types, select the **Help me choose** option.
 1. Select **Register**.
 
-     ![alt text](./Resources/images/register-web-app-common.png)
+     ![alt text](../images/register-web-app-common.png)
 
 1. The application's **Overview** pane is displayed when registration is complete. Record the **Directory (tenant) ID** and the **Application (client) ID** to be used in your application source code.
 
-    ![alt text](./Resources/images/record-identifiers-web-app-common.png)
+    ![alt text](../images/record-identifiers-web-app-common.png)
 
 ## Add a platform redirect URI
 
@@ -70,7 +70,7 @@ To create a secret for the application, follow these steps:
         2. Follow the steps and enter the necessary details to sign in with your Microsoft account (If you are using an Azure Pass, make sure you use the same account). You're requested to provide an email address so a one time passcode can be sent to you. Enter the code when prompted.
         3. The application requests permission to maintain access to data you have given it access to, and to sign you in and read your profile. Select **Accept**.
         4. The following screenshot appears, indicating that you have signed in to the application and have accessed your profile details from the Microsoft Graph API.
-        ![chat ui](./Resources/images/app_full_view.png)
+        ![chat ui](../images/app_full_view.png)
 
 ## Sign-out from the application
 
@@ -84,4 +84,4 @@ To create a secret for the application, follow these steps:
 1. App Setting file has been updated with the TenantId, ClientId, and ClientSecret.
 1. You are able to run the application and sign in with your Microsoft account.
 
-### [< Back](./Challenge-02.md) - [Next Pre-requisite >](./Challenge-02-Reference-App.md)
+### [< Back to Challenge 2](../../Challenge-02.md) - [Next Pre-requisite >](../../Challenge-02-Reference-App.md)
