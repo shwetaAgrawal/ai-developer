@@ -10,8 +10,8 @@ As developers we already use developer tools like Azure DevOps and GitHub. So wh
 
 :exclamation: Pre-requisites must be done in sequence as they are dependent on each other.
 
-1. [Setup Azure DevOps](./Challenge-04-Prereq-ADO.md)
-1. [Setup Azure Logic Apps](./Challenge-04-Prereq-LogicApp.md)
+1. [Setup Azure DevOps](./Resources/Supporting%20Challenges/Challenge-04-Prereq-ADO.md)
+1. [Setup Azure Logic Apps](./Resources/Supporting%20Challenges/Challenge-04-Prereq-LogicApp.md)
 
 >NOTE: These pre-requisites are required to complete the challenges in this module. If you have not completed the pre-requisites, please do so before proceeding with the challenges. Most of the challenges in this module will require the Azure DevOps project and Azure Logic App created in the pre-requisites.
 
