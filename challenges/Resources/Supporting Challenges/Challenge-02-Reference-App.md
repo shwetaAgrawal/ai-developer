@@ -45,7 +45,7 @@ This application was created as a sample application that allow you to focus on 
     var kernelBuilder = Kernel.CreateBuilder();
     ```
 
-    Now that you know the basics of the reference application, you are ready to start the first challenge. If you have completed the other prerequisites and challenges, you are ready to move on to the next challenge. [BEGIN!](./Challenge-02.md#challenges)
+    Now that you know the basics of the reference application, you are ready to start the first challenge. If you have completed the other prerequisites and challenges, you are ready to move on to the next challenge. [BEGIN!](../../Challenge-02.md#challenges)
 
 ## Success Criteria
 
