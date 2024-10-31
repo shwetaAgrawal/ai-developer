@@ -86,6 +86,7 @@ public partial class Chat
 			// Copy the user message to a local variable and clear the newMessage field in the UI
 			var userMessage = newMessage;
 			newMessage = string.Empty;
+			StateHasChanged();
 
 			// Start Challenge 02 - Sending a message to the chat completion service
 
