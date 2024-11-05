@@ -37,6 +37,7 @@ Using your local workstation is another option to complete the challenges. You w
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Git CLI](https://git-scm.com/downloads)
 - [Azure CLI (Optional)](https://aka.ms/installazurecli)
+- [Student Resources](#student-resources)
 
 :bulb: **Note:** GitHub Copilot is a great tool to help you write code faster. You can install the [GitHub Copilot Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) in Visual Studio Code. We highly recommend you install this extension to help you complete the challenges.
 
@@ -59,6 +60,7 @@ The rest of the challenges will refer to the relative paths inside the Git Repos
 
   ```text
   /Student
+  ├───.devcontainer
   ├─── challenges
   └───src
         └───Aspire
