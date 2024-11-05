@@ -42,15 +42,13 @@ In this challenge, you will be provided with a starter application that will req
         Configuration["AOI_API_KEY"]!);
     ```
 
-    :pushpin: This builder pattern provides a clean way to construct our kernel. First we specify the AI service to use, then we set up any plugins and other services our application needs. This approach lets us modify the kernel's capabilities without changing any underlying code.
-    
-    Next in our code, some additional services are added and logging is configured. After configuration is complete, we call Build() on the KernelBuilder to create the semantic kernel object that will handle our AI interactions, then the application is started.
+    :pushpin: This builder pattern provides a clean way to construct our kernel and register what services it can provide (using dependency injection, which lets the kernel manage and provide access to its services). First we specify the AI service to use, along with any plugins and other services our application needs. After configuration is complete, we call Build() to create the kernel object that will handle our AI interactions. This approach makes it easy to modify what capabilities are available to our application without changing existing code.
 
 1. Locate the code comment `// Challenge 02 - Chat Completion Service` in the `Chat.razor.cs` file.
 
     :bulb: [Retrieving chat completion services](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/?tabs=csharp-AzureOpenAI%2Cpython-AzureOpenAI%2Cjava-AzureOpenAI&pivots=programming-language-csharp#retrieving-chat-completion-services)
 
-    :pushpin: The kernel itself doesn't expose AI functionality directly - instead, it manages services that do. When we want to send messages to the AI, we need to obtain a reference to the chat service specifically. That's why we use GetRequiredService to get an IChatCompletionService from the kernel, which we'll use to handle our actual AI conversations.
+    :pushpin:  The kernel itself doesn't expose AI functionality directly - instead, it manages services that do. When we want to send messages to the AI, we need to obtain a reference to the chat service specifically from the kernel's dependency injection container (kernel.Services). That's why we use GetRequiredService to get an IChatCompletionService from the kernel, which we'll use to handle our actual AI conversations.
 
 ### Implement SendMessage Method
 
