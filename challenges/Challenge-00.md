@@ -60,7 +60,6 @@ The rest of the challenges will refer to the relative paths inside the Git Repos
 
   ```text
   /Student
-  ├───.devcontainer
   ├─── challenges
   └───src
         └───Aspire
