@@ -1,4 +1,4 @@
-### [< Back to Challenge 2](../../Challenge-02.md) - [Next Pre-requisite >](../../Challenge-02-Reference-App.md)
+### [< Back to Challenge 2](../../Challenge-02.md) - [Next Pre-requisite >](./Challenge-02-Reference-App.md)
 
 # Creating Application Registration in Entra
 
@@ -84,4 +84,4 @@ To create a secret for the application, follow these steps:
 1. App Setting file has been updated with the TenantId, ClientId, and ClientSecret.
 1. You are able to run the application and sign in with your Microsoft account.
 
-### [< Back to Challenge 2](../../Challenge-02.md) - [Next Pre-requisite >](../../Challenge-02-Reference-App.md)
+### [< Back to Challenge 2](../../Challenge-02.md) - [Next Pre-requisite >](./Challenge-02-Reference-App.md)
