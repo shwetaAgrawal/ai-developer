@@ -8,7 +8,7 @@ The first step in understanding Semantic Kernel is to become familiar with the b
 
 ## Description
 
-In this challenge, you will be provided with a starter application that will require you to complete the implementation of the chat feature using Semantic Kernel and the Azure OpenAI GPT-4 model. The application is a simple Blazor chat window that allows users to interact with the AI model by typing a question or prompt and pressing the **CTRL + Enter** key. The AI model will then respond with an answer or completion to the prompt. The application uses the Semantic Kernel framework to interact with the AI model. You will need to complete the implementation of the chat API to send the user's prompt to the AI model and return the response to the user.
+In this challenge, you will be provided with a starter application that will require you to complete the implementation of the chat feature using Semantic Kernel and the Azure OpenAI GPT-4o model. The application is a simple Blazor chat window that allows users to interact with the AI model by typing a question or prompt and pressing the **CTRL + Enter** key. The AI model will then respond with an answer or completion to the prompt. The application uses the Semantic Kernel framework to interact with the AI model. You will need to complete the implementation of the chat API to send the user's prompt to the AI model and return the response to the user.
 
 ## Prerequisites
 
