@@ -4,19 +4,19 @@
 
 ## Introduction
 
-Thank you for participating in the OpenAI & Semantic Kernel Fundamentals What The Hack. Before you can hack, you will need to set up some prerequisites.
+Thank you for participating in the OpenAI & Semantic Kernel Fundamentals. Before you can workshop, you will need to set up some prerequisites.
 
 ## Description
 
-In this challenge, you will set up the necessary prerequisites and environment to complete the rest of the hack.
+In this challenge, you will set up the necessary prerequisites and environment to complete the rest of the workshop.
 
 ### Access Azure OpenAI
 
-You will need an Azure subscription to complete this hack. If you don't have one, choose one of the following options:
+You will need an Azure subscription to complete this workshop. If you don't have one, choose one of the following options:
 
 - [Azure Subscription](https://azure.microsoft.com/en-us/free/)
 
-- Azure Passes: If your hack-a-thon group has access to an Azure Pass, you can utilize it to gain access to Azure OpenAI and other necessary Azure resources for this Hack-a-thon. Please see your instructor or event organizer for details on how to redeem your Azure Pass.
+- Azure Passes: If your workshop group has access to an Azure Pass, you can utilize it to gain access to Azure OpenAI and other necessary Azure resources for this workshop. Please see your instructor or event organizer for details on how to redeem your Azure Pass.
 
 ### Development Environment
 

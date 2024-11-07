@@ -23,4 +23,4 @@ Make sure you are running the latest version of the .NET Aspire SDK:
 1. If your Aspire version number is lower than `8.2.0`, run `dotnet workload update` to ensure that you get the latest updates.
 
 
-:bulb: Congrats! You're ready for the Hackathon! :bulb: [Click Here](../../Challenge-00.md) to return to Challenge 0!
+:bulb: Congrats! You're ready for the workshop! :bulb: [Click Here](../../Challenge-00.md) to return to Challenge 0!

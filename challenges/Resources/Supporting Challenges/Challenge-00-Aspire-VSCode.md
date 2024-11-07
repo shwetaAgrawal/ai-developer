@@ -25,4 +25,4 @@ Next you want to install the .NET Aspire workload:
 dotnet workload install aspire
 ```
 
-:bulb: Congrats! You're ready for the Hackathon! :bulb: [Click Here](../../Challenge-00.md) to return to Challenge 0!
+:bulb: Congrats! You're ready for the workshop! :bulb: [Click Here](../../Challenge-00.md) to return to Challenge 0!

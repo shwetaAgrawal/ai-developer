@@ -1,16 +1,16 @@
-# What The Hack - Azure Open AI and Semantic Kernel Fundamentals
+# AI Developer - Azure Open AI and Semantic Kernel Fundamentals
 
 ## Introduction
 
-The Azure OpenAI and Semantic Kernel Fundamentals What The Hack is an introduction to understanding the conceptual foundations of infusing your application with AI using the Semantic Kernel development kit. Materials from this hack can serve as a foundation for building your own AI infused solutions with Semantic Kernel.
+The Azure OpenAI and Semantic Kernel Fundamentals is an introduction to understanding the conceptual foundations of infusing your application with AI using the Semantic Kernel development kit. Materials from this workshop can serve as a foundation for building your own AI infused solutions with Semantic Kernel.
 
-This hack consists of eight challenges and is designed to encourage learning and research. If you want a deeper understanding of how to implement an AI solution but have little or no experience with OpenAI or Semantic Kernel then this hack is for you.
+This workshop consists of eight challenges and is designed to encourage learning and research. If you want a deeper understanding of how to implement an AI solution but have little or no experience with OpenAI or Semantic Kernel then this workshop is for you.
 
-Hack-a-thons are hosted as a team based activity where students work in groups of 3-5 people to solve the challenges. Each challenge is designed to be completed in 30-90 minutes.
+We recommend to host this as a team based activity where students work in groups of 3-5 people to solve the challenges. Each challenge is designed to be completed in 30-90 minutes.
 
 ## Learning Objectives
 
-This hack is designed for individuals who want to gain practical experience in working with Azure OpenAI and Semantic Kernel. By applying this knowledge, you will be able to integrate AI into your own applications.
+This workshop is designed for individuals who want to gain practical experience in working with Azure OpenAI and Semantic Kernel. By applying this knowledge, you will be able to integrate AI into your own applications.
 
 Participants will learn how to:
 
