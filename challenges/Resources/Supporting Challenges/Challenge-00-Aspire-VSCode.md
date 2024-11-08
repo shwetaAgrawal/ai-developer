@@ -9,6 +9,7 @@ The instructions in this document will help you install .NET Aspire SDK. There a
   - [C# Dev Kit Extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
 
 ## Install the .NET Aspire SDK
+
 Open your preferred CLI (Powershell, Bash, or Terminal) and ensure you have the .NET CLI setup in your path by typing `dotnet --version`. You should see a result that looks like the image below:
 
 ![dotnet version](../images/dotnet_version.png)

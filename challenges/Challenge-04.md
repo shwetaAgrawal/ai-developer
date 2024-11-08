@@ -28,9 +28,9 @@ This challenge will introduce you to how to import OpenAPI API as Semantic Kerne
 
         :bulb: [Add Logic Apps as plugins](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-logic-apps-as-plugins)
 
-        :bulb: We have created a `HttpClient` instance that will reuse your app login. When you are configuring the `OpenApiFunctionExecutionParameters`, instead of setting your own `HttpClient`, you can use our provided client by setting it to `kernel.Services.GetRequiredService<IHttpClientFactory>().CreateClient("LogicAppHttpClient")`
+        :exclamation: We have created a `HttpClient` instance that will reuse your app login. When you are configuring the `OpenApiFunctionExecutionParameters`, instead of setting your own `HttpClient`, you can use our provided client by setting it to `kernel.Services.GetRequiredService<IHttpClientFactory>().CreateClient("LogicAppHttpClient")`
 
-        :exclamation: There is a bug in the Semantic Kernel SDK for OpenAPI's - your plugin name must be 12 characters or less. We recommened naming the plugin here `workItems` just to be safe. :exclamation:
+        :exclamation: Semantic Kernel SDK for OpenAPI's - your plugin name must be 64 characters or less. Then name of your logic app, the name of your trigger, and the name of your plugin will be concatenated together. So please keep your plugin name short or rename your logic app trigger to a shorter name.
 
     - Test the prompt "What are my work items?" see how it responds.
 1. _(Optional)_ Create 2 additional Logic Apps Workflows to chained together to create a more complex conversation with the AI.

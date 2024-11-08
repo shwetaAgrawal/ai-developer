@@ -20,15 +20,15 @@ Challenges:
 
 * Launch your AI Chat app, and submit the prompt 
 
-  ```plaintext
+  ```text
   What time is it?
   ```
   
-    Since the AI does not have the capability to provide real-time information, you will get a response similar to the following:
+  Since the AI does not have the capability to provide real-time information, you will get a response similar to the following:
 
-    ```plaintext
-    I can't provide real-time information, including the current time. You can check the time on your device or through various online sources.
-    ```
+  ```text
+  I can't provide real-time information, including the current time. You can check the time on your device or through various online sources.
+  ```
 
     Let's fix this by creating a plugin that can provide the current time and other related information.
 
@@ -48,13 +48,13 @@ Challenges:
 
   * Test the AI by launching the application and asking the bot
   
-    ```plaintext
+    ```text
     What time is it?
     ```
 
     Now, the AI should be able to provide the current time by having Semantic Kernel call the ***GetTime*** function in your plugin. The response should be similar to the following:
 
-    ```plaintext
+    ```text
     The current time is 3:43 PM on August 23, 2024.
     ```
 
@@ -71,13 +71,13 @@ Challenges:
 
   * Run the application and test the Geocoding plugin by submitting the following prompt:
 
-    ```plaintext
+    ```text
     what are the geo-coordinates for Tampa, FL
     ```
   
       The AI should respond with the coordinates for Tampa, similar to the following:
   
-      ```plaintext
+      ```text
       The geo-coordinates for Tampa, FL are approximately:
 
       Latitude: 27.9477595
@@ -89,18 +89,21 @@ Challenges:
 
   * Add Methods to your plugin to:
     1. Get the forecast weather at lat/long location for up to 16 days in the future
-        ```C#
-          $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,uv_index&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days={days}");
-        ```
-    2. Get the current weather at lat/long location for a number of days in the past
-        ```C#
-          $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,daylight_duration,uv_index_max,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&past_days={daysInPast}");
-        ```
+
+      ```CSharp
+        $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,uv_index&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days={days}");
+       ```
+
+    1. Get the current weather at lat/long location for a number of days in the past
+
+       ```CSharp
+        $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,daylight_duration,uv_index_max,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&past_days={daysInPast}");
+       ```
 
   * Test your Plugins by asking the following question:
   
-    ```plaintext
-    What is the weather in San Francisco next Tuesday
+    ```text
+    What is the weather in San Francisco next Tuesday?
     ```
 
     :exclamation: The AI should perform the following plan to answer the question but may do so in a different order or different set of functions:

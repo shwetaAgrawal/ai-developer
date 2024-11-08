@@ -25,7 +25,7 @@ In this challenge, you will deploy an Azure OpenAI service capable of hosting DA
 
 1. A simple prompt to test the plugin
 
-    ```prompt
+    ```text
     create a picture of a cute kitten wearing a hat
     ```
 

@@ -12,11 +12,11 @@
 
     ![Organization Settings](../images/org.png)
 
-2. Under `Policies` turn on `Third-party application access via OAuth`.
+1. Under `Policies` turn on `Third-party application access via OAuth`.
 
     ![Policy](../images/policy.png)
 
-3. Under Pipelines turn off `Disable creation of classic build pipelines` and `Disable creation of classic release pipelines`.
+1. Under Pipelines turn off `Disable creation of classic build pipelines` and `Disable creation of classic release pipelines`.
 
     ![Classic Pipelines](../images/classicpipelines.png)
 

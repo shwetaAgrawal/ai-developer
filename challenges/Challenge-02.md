@@ -34,7 +34,8 @@ In this challenge, you will be provided with a starter application that will req
     ```
 
 1. Navigate to the `Chat.razor.cs` and Implement the following code to add the Azure OpenAI Chat Completion service to the Kernel object.
-    ```csharp
+
+    ```CSharp
     //Add Azure OpenAI Chat Completion
     kernelBuilder.AddAzureOpenAIChatCompletion(
         Configuration["AOI_DEPLOYMODEL"],
@@ -54,7 +55,7 @@ In this challenge, you will be provided with a starter application that will req
 
 1. Implement the `SendMessage` Method.
 
-    ```csharp
+    ```CSharp
     private async Task SendMessage()
     {
         if (!string.IsNullOrWhiteSpace(newMessage) && chatHistory != null)
@@ -71,35 +72,47 @@ In this challenge, you will be provided with a starter application that will req
 
         In the `Chat.razor.cs` file, find the `SendMessage` method. Below the comment `// Start Challenge 02 - Sending a message to the chat completion service`, add the user's prompt from the `ChatRequest` object to the chat history collection.
 
-	    :pushpin: The chat history maintains a record of the conversation between user and AI. By adding each message to this history, we give the AI context about the ongoing conversation, allowing it to provide more relevant and coherent responses.
+       :pushpin: The chat history maintains a record of the conversation between user and AI. By adding each message to this history, we give the AI context about the ongoing conversation, allowing it to provide more relevant and coherent responses.
 
-	    :bulb: For a detailed explanation of Chat History, please refer to the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/chat-history?pivots=programming-language-csharp).
+       :bulb: For a detailed explanation of Chat History, please refer to the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/chat-history?pivots=programming-language-csharp).
 
     1. Use the Chat Completion service to complete the implementation of the `SendMessage` method by sending the entire chat history, including the latest prompt, to the Azure OpenAI chat service. Once the service processes this and generates a response, wait until the full response is received before sending it back to the client.
 
-	    :bulb: Refer to the Semantic Kernel documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/?tabs=csharp-AzureOpenAI%2Cpython-AzureOpenAI%2Cjava-AzureOpenAI&pivots=programming-language-csharp#using-chat-completion-services) for an example of how to call the chat completion service.
+       :bulb: Refer to the Semantic Kernel documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/?tabs=csharp-AzureOpenAI%2Cpython-AzureOpenAI%2Cjava-AzureOpenAI&pivots=programming-language-csharp#using-chat-completion-services) for an example of how to call the chat completion service.
 
     1. Now add the **AI's Response** *Content* to the Chat History collection.
 
         Once you have the response back from the chat service, you'll need to add the text of this response to the UI so your user can see it. We've already wired up the UI to read the data from the Chat History object that you've added the **user's message** to above. We can add the AI's response to this same collection as an **Assistant** message to ensure the user knows the message came from the AI.
 
-	    :pushpin: We add both user messages and AI responses to the same chat history collection, but with different roles (User vs Assistant). This maintains the conversation context for future AI responses.
+       :pushpin: We add both user messages and AI responses to the same chat history collection, but with different roles (User vs Assistant). This maintains the conversation context for future AI responses.
 
-	    :bulb: To see how the ChatHistory object works in detail, see the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/chat-history?pivots=programming-language-csharp#creating-a-chat-history-object)
+       :bulb: To see how the ChatHistory object works in detail, see the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/chat-history?pivots=programming-language-csharp#creating-a-chat-history-object)
 
 ### Testing
 
-1. Run the application and test the chat completion by submitting the prompt `Why is the sky blue`. The response should be similar to the following
+1. Run the application and test the chat completion by submitting the prompt:
+
+    ```text
+    Why is the sky blue?
+    ```
+
+    The response should be similar to the following
     ![Challenge 02 Image 02](./Resources/images/ch02I02.png)
     :bulb: For more information on the Semantic Kernel, refer to the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/kernel?pivots=programming-language-csharp).
 
 1. Test the Chat History by submitting the following prompt without refreshing the browsing window and clearing the chat history.
 
-    ```
-    Why is it red
+    ```text
+    Why is it red?
     ```
 
-    If the chat history is working, the AI will understand the context of the question to be `Why is the sky red` and provide a relevant response.
+    If the chat history is working, the AI will understand the context of the next question  and provide a relevant response.
+
+    If you refresh the browser window or click `New Chat`, the AI will not have the context of the previous question and will not provide a relevant response. So then you would have to provide the context again by asking the question:
+
+    ```text
+    Why is the sky red?
+    ```
 
     :bulb: For more information on Chat History, refer to the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/ai-services/chat-completion/chat-history?pivots=programming-language-csharp).
 
@@ -108,20 +121,20 @@ In this challenge, you will be provided with a starter application that will req
 ## Success Criteria
 
 - Configuration
-    - [ ] Deployed GPT model in Azure OpenAI Studio
-    - [ ] Added deployment name, endpoint URL, and API key to appsettings.json
+  - [ ] Deployed GPT model in Azure OpenAI Studio
+  - [ ] Added deployment name, endpoint URL, and API key to appsettings.json
 - Kernel Setup
-    - [ ] Registered chat completion service with kernel builder
-    - [ ] Built kernel instance
-    - [ ] Retrieved chat completion service using GetRequiredService
+  - [ ] Registered chat completion service with kernel builder
+  - [ ] Built kernel instance
+  - [ ] Retrieved chat completion service using GetRequiredService
 - Message Handling
-    - [ ] Implemented adding user messages to chat history
-    - [ ] Successfully calling chat completion service
-    - [ ] Adding AI responses to chat history
+  - [ ] Implemented adding user messages to chat history
+  - [ ] Successfully calling chat completion service
+  - [ ] Adding AI responses to chat history
 - Testing
-    - [ ] "Why is the sky blue" returns a coherent response
-    - [ ] "Why is it red" demonstrates chat history is working
-    - [ ] AI responds appropriately to follow-up questions
+  - [ ] "Why is the sky blue" returns a coherent response
+  - [ ] "Why is it red" demonstrates chat history is working
+  - [ ] AI responds appropriately to follow-up questions
 
 
 ## Learning Resources

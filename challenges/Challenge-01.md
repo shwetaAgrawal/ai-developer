@@ -17,7 +17,7 @@ The first step in understanding Azure OpenAI is to get familiar with the basics.
 
 * Using the Azure Open AI Studio, write a user query (a prompt) to return a United States Postal Service formatted address from the following email
 
-    ```plaintext
+    ```text
         Subject: Elevate Your Brand with Our Comprehensive Marketing Solutions! 
         From: BrightEdge Marketing
         To: John Doe

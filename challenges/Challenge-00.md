@@ -46,7 +46,7 @@ If you do not have GitHub Copilot, you can still complete the challenges. Howeve
 
 From a directory where you want to store the resources, clone the [repository](https://github.com/microsoft/ai-developer). You can do this by running the following command in your terminal or command prompt:
 
-  ```powershell
+  ```console
   git clone https://github.com/microsoft/ai-developer.git
   ```
 

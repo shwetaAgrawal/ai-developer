@@ -109,7 +109,12 @@ This will allow the Logic App to accept tokens from the App Registration.
 1. Using the information from the App Registration, fill in the following fields:
     - Paste the *Client ID* from the App Registration.
     - Issuer URL
-        - Copy this ``` https://sts.windows.net/{yourtenantid} ``` and replace *{yourtenantid}* with your tenant id.
+        - Copy and replace *{yourtenantid}* with your tenant id.is:
+
+            ```text
+            https://sts.windows.net/{yourtenantid} 
+            ```
+
     - *Allowed token audiences* 
         - Paste the *Application ID URI* from the App Registration.
 1. Next the 3 selections will be as follows:
@@ -168,7 +173,7 @@ This will allow the Logic App to accept tokens from the App Registration.
 
 1. Lastly, you will need the swagger URI for the challenge. Using the URL you copied from the last step, replace everything after `.net/` with `swagger.json`. This will give you the swagger URI for the Logic App. Here is an example:
 
-    ```csharp
+    ```CSharp
     // Before
     "https://aoai2.azurewebsites.net:443/get_work_items/triggers/get_workitems/invoke?api-version=2022-05-01&sp=Sample%2Frun&sv=1.0&sig=samplesignature"
 

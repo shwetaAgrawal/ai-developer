@@ -100,7 +100,7 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
             * Allowed headers: ```*```
             * Exposed headers: ```*```
             * Max age: ```120```
-            
+
             :bulb: If you are using AI Studio instead of Azure Open AI Studio, you will need to change the origin to ```https://ai.azure.com```.
 
     1. Click **Save**.
@@ -131,7 +131,12 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 1. Select the existing Blob Storage resource you created earlier.
 1. Click **Turn on CORS** if prompted.
 1. Choose the **AI Search Resource** setup in the previous step.
-1. For the Index Name use ```employeehandbook```
+1. For the Index Name use:
+
+    ```text
+    employeehandbook
+    ```
+
     > :bulb: The AI Search Index Name will be needed by the reference application
 
     ![Upload Files](./Resources/images/ch05i02.png)
@@ -144,13 +149,14 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
 1. Upload the ```employee_handbook.pdf``` from the **.\data** directory and **click Next**
 1. Set the Search type to **Vector** and the Chunk Size to **1024** then **click Next**
-    > :bulb: Chunk size refers to how much text is grouped together into a single segment or "chunk" before creating an embedding. When processing large documents, the text is often divided into smaller chunks to create embeddings for each segment. The chunk size determines how much text is included in each embedding.
-    >
-    > Choosing the right chunk size is important: if chunks are too large, important details might get lost or diluted in the embedding; if too small, the system might miss out on essential context. The chunk size thus impacts the accuracy and relevance of the information retrieved and subsequently used in generating responses
 
-    ![Chunk Size](./Resources/images/ch05i04.png)
+  > :bulb: Chunk size refers to how much text is grouped together into a single segment or "chunk" before creating an embedding. When processing large documents, the text is often divided into smaller chunks to create embeddings for each segment. The chunk size determines how much text is included in each embedding.
+  >
+  > Choosing the right chunk size is important: if chunks are too large, important details might get lost or diluted in the embedding; if too small, the system might miss out on essential context. The chunk size thus impacts the accuracy and relevance of the information retrieved and subsequently used in generating responses
 
-2. Set the Resource Authentication Type to **API Key**
+  ![Chunk Size](./Resources/images/ch05i04.png)
+
+1. Set the Resource Authentication Type to **API Key**
 
     ![Api Key](./Resources/images/ch05i05.png)
 
@@ -164,7 +170,8 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
 1. Register the AI Search and the *Azure AI Search Vector Store connector* with the Kernel Builder. The connector is configured with the URL and API key of the Azure AI Search service.
 
-    :bulb: There are several ways to add the AI Search Connector to Semantic Kernel. Follow the instructions using the **kernelBuilder**. 
+    :bulb: There are several ways to add the AI Search Connector to Semantic Kernel. Follow the instructions using the **kernelBuilder**.
+  
     * Refer to the [documentation](https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-ai-search-connector?pivots=programming-language-csharp#getting-started) for more information on how to configure the connector.
     * Be sure to use the code sample where the ```SearchIndexClient``` is registered separately, you will need this class in your plugin
     * Also note the 2 App Settings you added to the appsettings.json file: AI_SEARCH_URL, AI_SEARCH_KEY.
@@ -230,9 +237,17 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
     Test the plugin by running the applications and asking the Chatbot questions about the Contoso Handbook. The Chatbot should be able to answer questions similar to the following:
 
-    * ```What are the steps for the Contoso Performance Reviews?```
-    * ```What is Contoso's policy on Data Security?```
-    * ```Who do I contact at Contoso for questions regarding workplace safety?```
+    * ```text
+        What are the steps for the Contoso Performance Reviews?
+       ```
+
+    * ```text
+        What is Contoso's policy on Data Security?
+      ```
+
+    * ```text
+        Who do I contact at Contoso for questions regarding workplace safety?
+      ```
 
 ## Success Criteria
 

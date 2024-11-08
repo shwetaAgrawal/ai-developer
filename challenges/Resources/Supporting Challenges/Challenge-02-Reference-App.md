@@ -11,7 +11,7 @@ This application was created as a sample application that allow you to focus on 
 
     If you are using Visual Studio Code, you can run the application by executing the following command in the terminal from the root of your repository.
 
-    ```bash
+    ```console
     cd src\Aspire\Aspire.AppHost
     dotnet run
     ```
@@ -32,7 +32,7 @@ This application was created as a sample application that allow you to focus on 
 
     ![Files for Challenge](../images/filesforchallenges.png)
 
-2. Open the ```Chat.razor.cs``` file
+1. Open the `Chat.razor.cs` file
 
     At the heart of the Semantic Kernel framework is the **Kernel** object. Here is where you register the AI Models you will be working with and any Plugins you will be using in your application. You will learn about Plugins in later challenges.
 
@@ -40,7 +40,7 @@ This application was created as a sample application that allow you to focus on 
 
     Locate the following code in the ```Chat.razor.cs```:
 
-    ```csharp
+    ```CSharp
     //Configure Semantic Kernel
     var kernelBuilder = Kernel.CreateBuilder();
     ```

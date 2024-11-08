@@ -13,7 +13,12 @@ To complete registration, provide the application a name and specify the support
 1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com).
 1. If you have access to multiple tenants, use the **Settings** ![alt text](../images/admin-center-settings-icon.png)  in the top menu to switch to the tenant in which you want to register the application from the **Directories + subscriptions** menu.
 1. Browse to **Identity** > **Applications** > **App registrations**, select **New registration**.
-1. Enter a **Name** for the application, such as *identity-client-web-app*.
+1. Enter a **Name** for the application, such as
+
+    ```text
+    identity-client-web-app
+    ```
+
 1. For **Supported account types**, select **Accounts in this organizational directory only**. For information on different account types, select the **Help me choose** option.
 1. Select **Register**.
 
@@ -29,8 +34,18 @@ To specify your app type to your app registration, follow these steps:
 
 1. Under **Manage**, select **Authentication**.
 1. On the **Platform configurations** page, select **Add a platform**, and then select **Web** option.
-1. For the **Redirect URIs** enter `https://localhost:7118/signin-oidc`.
-1. Under **Front-channel logout URL**, enter `https://localhost:7118/signout-oidc` for signing out.
+1. For the **Redirect URIs** enter
+
+    ```text
+    https://localhost:7118/signin-oidc
+    ```
+
+1. Under **Front-channel logout URL**, enter
+  
+    ```text
+    https://localhost:7118/signout-oidc
+    ```
+
 1. Select **Configure** to save your changes.
 
 ## Create a secret for the application
@@ -58,7 +73,7 @@ To create a secret for the application, follow these steps:
     1. If in Visual Studio just press `F5` to run the application. The browser will open automatically. 
     2. Otherwise, navigate to the `src/BlazorAI` folder run the following commands in the terminal.
 
-        ```console
+        ```bash
         dotnet restore
         ```
 

@@ -75,8 +75,8 @@ This challenge will guide you through configuring and testing content filters us
 ```csharp
 catch (HttpOperationException e)
 {
-	if (e.ResponseContent != null)
-		chatHistory.AddAssistantMessage(e.ResponseContent);
+  if (e.ResponseContent != null)
+    chatHistory.AddAssistantMessage(e.ResponseContent);
 }
 ```
 
@@ -122,7 +122,7 @@ With that said, here's a brief example of a simple prompt filter created in code
     }
     ```
 
-2.  Register it when building the kernel.
+1. Register it when building the kernel.
 
     ```csharp
     // Configure Semantic Kernel
@@ -132,6 +132,6 @@ With that said, here's a brief example of a simple prompt filter created in code
     kernelBuilder.Services.AddSingleton<IPromptRenderFilter, FilterExample>();
     ```
 
-3. Whenever a prompt is invoked via a supported Invoke method, the filter code will be ran before the prompt is processed. When the condition matches, we override the value Context.Result, resulting in the new sensitive content message being returned to the user.
+1. Whenever a prompt is invoked via a supported Invoke method, the filter code will be ran before the prompt is processed. When the condition matches, we override the value Context.Result, resulting in the new sensitive content message being returned to the user.
 
 ### [< Previous Challenge](./Challenge-05.md) - **[Home](./README.md)** - [Next Challenge >](./Challenge-07.md)
