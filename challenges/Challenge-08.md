@@ -14,27 +14,15 @@ In this challenge, you will create a multi-agent system that takes the user's re
 
 ### Challenges
 
-:exclamation: You will need to change directories to the `MultiAgent.Console` project to complete this challenge. This will be a new console application and does not use Aspire.
+1. First, we're going to open the `MultiAgent.razor.cs` code behind. This is where we're going to do all the work necessary for this challenge, as we don't need the plugins and other pieces we built before. You might notice that it looks like a stripped down version of the `Chat.razor.cs` code-base. Most of the code here is the same as what you've built.
 
-1. First, we're going to open the MultiAgent.Console app. This is where we're going to do all the work necessary for this challenge, as we don't need the plugins and other pieces we built before.
-
-2. Open the User Secrets for the MultiAgent.Console app. Copy settings from the BlazorAI (previous challenges) ```appsettings.json``` file to the **MultiAgent.Console** ```appsettings.json``` file. Ensure that the following details are set. We recommend using the GPT-4o model for this exercise, though it will work with other models:
-
-```json
-{
-  "AOI_DEPLOYMODEL": "gpt-4o",
-  "AOI_ENDPOINT": "Replace with your AOI endpoint",
-  "AOI_API_KEY": "Replace with your AOI API key"
-}
-```
-
-3. Open the `Program.cs` file. The first thing we need to do is create the personas for our 3 agents. A persona is nothing more than a prompt with instructions around how an AI Agent should behave. We're going to use the following 3 personas.
+1. The first thing we need to do is create the personas for our 3 agents. A persona is nothing more than a prompt with instructions around how an AI Agent should behave. We're going to use the following 3 personas.
 
 ```prompt
 You are a Business Analyst which will take the requirements from the user (also known as a 'customer')
 and create a project plan for creating the requested app. The Business Analyst understands the user
 requirements and creates detailed documents with requirements and costing. The documents should be 
-usable by the Software Engineer as a reference for implementing the required features, and by the 
+usable by the SoftwareEngineer as a reference for implementing the required features, and by the 
 Product Owner for reference to determine if the application delivered by the Software Engineer meets
 all of the user's requirements.
 ```
@@ -43,41 +31,66 @@ all of the user's requirements.
 You are a Software Engineer, and your goal is create a web app using HTML and JavaScript
 by taking into consideration all the requirements given by the Business Analyst. The application should
 implement all the requested features. Deliver the code to the Product Owner for review when completed.
-You can also ask questions of the Business Analyst to clarify any requirements that are unclear.
+You can also ask questions of the BusinessAnalyst to clarify any requirements that are unclear.
 ```
 
 ```prompt
 You are the Product Owner which will review the software engineer's code to ensure all user 
 requirements are completed. You are the guardian of quality, ensuring the final product meets
 all specifications and receives the green light for release. Once all client requirements are
-completed, you can approve the request by just responding "approve". Do not ask any other agent
+completed, you can approve the request by just responding "%APPR%". Do not ask any other agent
 or the user for approval. If there are missing features, you will need to send a request back
-to the Software Engineer or Business Analyst with details of the defect.
+to the SoftwareEngineer or BusinessAnalyst with details of the defect. To approve, respond with
+the token %APPR%.
 ```
 
-1. Create string objects and add these personas. Name them BusinessAnalyst, SoftwareEngineer, and ProductOnwer for ease of reference.
+3. In the `CreateAgents()` Method, we need to create a `ChatCompletionAgent` for each of the above personas. Each agent should have the Instructions, a Name, and a reference to the Kernel that is created in the `InitializeSemanticKernel()` method.
 
-1. Next we need to create an Agent for each persona. These Agents should be `ChatCompletionAgent` objects. They will all share the same Kernel Configuration.
+    :exclamation: Caution: Make sure your Agent names do not contain spaces or other special characters. Letters only!
 
-1. Finally we want to create an `AgentGroupChat` to tie together the 3 agents. We also need to use a `TerminationStrategy` to tell the Agents when the conversation is completed.
+    :bulb: You can create and use a different Kernel object for each agent. Great if some agents can operate with cheaper models such as GPT 3.5 or 4o-mini, while others might need more expensive agents!
 
-1. At the bottom of `Program.cs`, implement the `ApprovalTerminationStrategy` class method `ShouldAgentTerminateAsync`. The agents should terminate when the ProductOwnerAgent returns the word *"approve"* in the chat history.
+    :bulb: [Semantic Kernel Chat Completion Agent](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-templates?pivots=programming-language-csharp)
 
-1. Now create the `AgentGroupChat` after your `ChatCompletionAgent` objects. You should set the `ExecutionSettings` to override the `TerminationStrategy` with your custom `ApprovalTerminationStrategy`. Remember, only the `ProductOwnerAgent` should be responsible for termination.
+4. Next we want to create an `AgentGroupChat` to tie together the 3 agents. Head up to the last line of the `InitializeSemanticKernel()` method. Look for the Comment that instructs you to create the `AgentGroupChat` object. You need to create the AgentGroupChat, passing it the Array of `Agents`, and `ExecutionSettings` will need to set the `TerminationStrategy` to an instance of `ApprovalTerminationStrategy`. This class takes 2 arguments, the `MaximumIterations`, which is how many times the group are allowed to communicate between each other before we abandon the thread, and `Agents` which is a `IReadOnlyList<Agent>` collection of agents that are allowed to terminate the chat.
 
-1. Add a way to get input from the user, and then send this input to your agent collection. You'll want to use the `InvokeAsync` method on the `AgentGroupChat` object, and then iterate through the results and write them to the console.
+    :bulb: [Semantic Kernel Agent Collaboration](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-chat?pivots=programming-language-csharp#creating-an-agent-group-chat)
 
-1. Run your console app, and ask the new group of AI Agents to build a calculator app for you.
+    :bulb: [Multi-Turn Agent Invocation](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-chat?pivots=programming-language-csharp#multi-turn-agent-invocation)
+
+5. At the bottom of `MultiAgent.razor.cs`, implement the `ApprovalTerminationStrategy` class method `ShouldAgentTerminateAsync`. The agents should terminate when the ProductOwnerAgent returns the word *"%APPR%"* in the chat history.
+    
+    :bulb: [Agent Termination Strategies](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-chat?pivots=programming-language-csharp#chat-termination)
+
+6. Next up, we need to implement the `SendMessage()` method. It will be similar in nature to the one you built in the `Chat.razor.cs` in other challenges. There are two key pieces you will need to implement. You need to create a new `ChatMessageContent` object, and add it to the `AgentGroupChat` object. It should have an `AuthorRole` specified for the User, and the chat message contents that we copied to the `userMessage` variable.
+
+    :bulb: [Multi-turn chat](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-chat?pivots=programming-language-csharp#multi-turn-agent-invocation)
+
+7. Finally, we need to iterate through the results from the `AgentGroupChat` and dump them to our `chatHistory` to display back to the user. We can use an async foreach loop to do this like so:
+   ```csharp
+    await foreach (var message in AgentGroupChat.InvokeAsync())
+   ```
+    This will give you the response back from the chat each time an Agent takes a turn. You can then add this message to the chatHistory directly.
+
+    :bulb: You should add a call to `StateHasChanged()` after you add the object to the chat history so that Blazor knows to refresh the UI.
+
+8. Run your blazor app, and ask the new group of AI Agents to build a calculator app for you.
 
 ### Success Criteria
 
-1. You have a console app that will write out the following from a conversation with 3 AI Agents:
+1. You have implemented the Multi-Agent Chat page that will write out the following from a conversation with 3 AI Agents:
    - Software Development Plan and Requirements
    - Source Code in HTML and JavaScript
    - Code Review and Approval
 
-## Learning Resources
+### Bonus
 
+- Copy the Code from the chat history markdown into matching files on your file system. There should be HTML content specified. Stick that in an index.html, and then launch it with your web browser. Did the app function as the AI said it would?
+  - If so, see if you can enhance the app. Ask the AI to make it responsive. Or maybe ask it to add a feature.
+  - If not, try experimenting with your personas. Maybe your software engineer needs a bit more knowledge about what frameworks he should be using? Or maybe you just need to give better requirements to your group. See if you can get a functional app!
+
+## Learning Resources
+- [Agent Group Chat with Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-chat?pivots=programming-language-csharp) - Semantic Kernel docs on Multi-agent Collaboration
 - [MetaGPT](https://github.com/geekan/MetaGPT) - Multi-agent Framework. Great example of what a complex multi-agent system can do.
 - [AutoGen Multi-Agent Conversational Framework](https://microsoft.github.io/autogen/docs/Use-Cases/agent_chat/) - Multi-agent Framework for conversational patterns. Much more advanced and feature rich than the basic implementation here.
 - [AutoGen with Semantic Kernel](https://devblogs.microsoft.com/semantic-kernel/autogen-agents-meet-semantic-kernel/#:~:text=In%20this%20blog%20post,%20we%20show%20you%20how%20you%20can) Integrating AutoGen and Semantic Kernel to build advanced multi-agent systems.

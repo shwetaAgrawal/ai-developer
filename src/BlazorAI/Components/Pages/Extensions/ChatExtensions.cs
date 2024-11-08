@@ -52,6 +52,7 @@ public partial class Chat
 	protected override async Task OnInitializedAsync()
 	{
 		// This is used by Blazor to capture the user input for shortcut keys.
+		KeyCodeService.Clear();
 		KeyCodeService.RegisterListener(OnKeyDownAsync);
 
 		// Initialize the chat history here

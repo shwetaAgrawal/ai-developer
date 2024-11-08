@@ -23,6 +23,15 @@ using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddLogging(loggingBuilder =>
+{
+	loggingBuilder.AddConsole();
+	loggingBuilder.AddDebug();
+	loggingBuilder.AddFilter("Microsoft", LogLevel.Error);
+	loggingBuilder.AddFilter("System", LogLevel.Error);
+	loggingBuilder.AddFilter("Microsoft.Identity", LogLevel.Error);
+});
+
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
@@ -33,13 +42,6 @@ builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration,
 	.AddMicrosoftGraph(builder.Configuration.GetSection("DownstreamApi"))
 	.AddInMemoryTokenCaches();
 
-
-builder.Services.AddLogging(loggingBuilder =>
-{
-	loggingBuilder.AddConsole();
-	loggingBuilder.AddDebug();
-});
-
 builder.Services.AddAuthorization(
 	options => options.FallbackPolicy = options.DefaultPolicy);
 
@@ -48,6 +50,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddRazorComponents()
 	.AddInteractiveServerComponents()
 	.AddMicrosoftIdentityConsentHandler();
+
+builder.Services.AddMicrosoftGraph();
 
 builder.Services.AddControllersWithViews()
 	.AddMicrosoftIdentityUI();

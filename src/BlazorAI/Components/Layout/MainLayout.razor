@@ -11,6 +11,7 @@
     <FluentStack Orientation="Orientation.Horizontal" Width="100%">
         <FluentNavMenu Width="300">
             <FluentNavLink Href="/" OnClick="NavigateToChat" Icon="@(new Icons.Regular.Size20.Bot())">Chat</FluentNavLink>
+            <FluentNavLink Href="/multiagent" OnClick="NavigateToMultiAgent" Icon="@(new Icons.Regular.Size20.BotSparkle())">Multi-Agent</FluentNavLink>
         </FluentNavMenu>
         <FluentBodyContent class="body-content">
             <main class="content">
@@ -30,5 +31,10 @@
     private void NavigateToChat()
     {
         Navigation.NavigateTo("chat");
+    }
+
+    private void NavigateToMultiAgent()
+    {
+        Navigation.NavigateTo("multiagent");
     }
 }
