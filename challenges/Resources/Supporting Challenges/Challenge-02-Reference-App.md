@@ -13,6 +13,7 @@ This application was created as a sample application that allow you to focus on 
 
     ```console
     cd src\Aspire\Aspire.AppHost
+    dotnet dev-certs https --trust
     dotnet run
     ```
 
