@@ -28,15 +28,13 @@ Using your local workstation is another option to complete the challenges. You w
 
 ##### Install the following tools on your Local Workstation:
 
-- [Visual Studio Code](https://code.visualstudio.com/download)
-  - :exclamation: Required: [.NET Aspire SDK](./Resources/Supporting%20Challenges/Challenge-00-Aspire-VSCode.md):exclamation:
-  - [C# Dev Kit Extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
-  - Recommended: [GitHub Copilot Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-- Or [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
-  - :exclamation: Required [.NET Aspire Tooling for Visual Studio](./Resources/Supporting%20Challenges/Challenge-00-Aspire-VS2022.md):exclamation:
+- IDE
+  - We recommend [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+  - But you can use [VS Code](https://code.visualstudio.com/download)
+    - [C# Dev Kit Extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+    - Recommended: [GitHub Copilot Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Git CLI](https://git-scm.com/downloads)
-- [Azure CLI (Optional)](https://aka.ms/installazurecli)
+- [Git CLI](https://git-scm.com/downloads) or [GitHub Desktop](https://github.com/apps/desktop)
 
 :bulb: **Note:** GitHub Copilot is a great tool to help you write code faster. You can install the [GitHub Copilot Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) in Visual Studio Code. We highly recommend you install this extension to help you complete the challenges.
 
