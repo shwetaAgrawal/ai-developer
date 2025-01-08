@@ -9,9 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Options\**" />
     <Compile Remove="Services\**" />
+    <Content Remove="Extensions\**" />
+    <Content Remove="Options\**" />
     <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Options\**" />
     <EmbeddedResource Remove="Services\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Options\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 	<ItemGroup>
@@ -56,8 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\Pages\Controls\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Options\" />
   </ItemGroup>
 
 </Project>

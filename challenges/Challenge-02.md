@@ -12,7 +12,6 @@ In this challenge, you will be provided with a starter application that will req
 
 ## Prerequisites
 
-1. Set up the App Registration in Entra following these instructions, [Entra App Registration](./Resources/Supporting%20Challenges/Challenge-02-Entra.md).
 1. Complete the [Getting Familiar With the Reference Application](./Resources/Supporting%20Challenges/Challenge-02-Reference-App.md) beginner guide.
 
 ## Challenges

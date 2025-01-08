@@ -1,6 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var workitems = builder.AddProject("workitems-api", @"..\..\WorkItems\WorkItems.csproj");
+var workitems = builder.AddProject<Projects.WorkItems>("workitems-api");
 
 builder.AddProject<Projects.BlazorAI>("blazor-aichat")
     .WithExternalHttpEndpoints()
