@@ -16,7 +16,7 @@ Participants will learn how to:
 
 - Build a simple chat using Semantic Kernel and C#
 - Add plugins and enable auto calling to create Planners
-- Create a workflow plugin using Logic Apps
+- Import existing APIs using OpenAPI
 - Implement Retrieval Augmented Generation (RAG)
   - Document Chunking
   - Grounding AI
@@ -41,10 +41,8 @@ Participants will learn how to:
   - Creating Semantic Kernel Plugins
   - Enable auto function calling
   - What is a Planner
-- [Challenge 04](./challenges/Challenge-04.md): Create a workflow plugin using Logic Apps
-  - Setup Azure DevOps
-  - Create a Logic App
-  - Import Logic App into Semantic Kernel
+- [Challenge 04](./challenges/Challenge-04.md): Import Plugin using OpenAPI
+  - Import API using OpenAPI Specification into Semantic Kernel
 - [Challenge 05](./challenges/Challenge-05.md): Retrieval-Augmented Generation (RAG)
   - Document Chunking & Embedding
   - Enhance AI responses by searching external sources
