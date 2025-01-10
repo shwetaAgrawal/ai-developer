@@ -12,7 +12,7 @@ In this challenge, you will be provided with a starter application that will req
 
 ## Prerequisites
 
-1. Complete the [Getting Familiar With the Reference Application](./Resources/Supporting%20Challenges/Challenge-02-Reference-App.md) beginner guide.
+1. Complete the [Getting Familiar With the Reference Application](../Resources/Supporting%20Challenges/Challenge-02-Reference-App.md) beginner guide.
 
 ## Challenges
 

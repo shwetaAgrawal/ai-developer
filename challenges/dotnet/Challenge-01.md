@@ -13,7 +13,7 @@ The first step in understanding Azure OpenAI is to get familiar with the basics.
 
 ## Challenges
 
-![chat playground](./Resources/images/ch0203.png)
+![chat playground](../Resources/images/ch0203.png)
 
 * Using the Azure Open AI Studio, write a user query (a prompt) to return a United States Postal Service formatted address from the following email
 

@@ -25,7 +25,7 @@ This challenge will guide you through configuring and testing content filters us
   - Navigate to your already-created Open AI resource in the Azure Portal.
   - At the bottom of the overview page, click the button for "Go to Azure OpenAI Studio".
 
-    <img src="./Resources/images/aoai-studio-button.png" alt="aoai-studio-button" width="30%"/>
+    <img src="../Resources/images/aoai-studio-button.png" alt="aoai-studio-button" width="30%"/>
 
 - **Direct link:** https://oai.azure.com/
 
@@ -35,17 +35,17 @@ This challenge will guide you through configuring and testing content filters us
 1. Navigate to the "**Content Filters**" tab at the lower left.
 1. Click "**Create content filter**", then enter a name for your new filter.
 
-    <img src="./Resources/images/filter-name.png" alt="aoai-filter-name" width="60%"/>
+    <img src="../Resources/images/filter-name.png" alt="aoai-filter-name" width="60%"/>
 
 1. Experiment with the threshold sliders for filtering out offensive language or specific categories of content.
 
-    <img src="./Resources/images/filter-sliders.png" alt="aoai-filter-sliders" width="60%"/>
+    <img src="../Resources/images/filter-sliders.png" alt="aoai-filter-sliders" width="60%"/>
 
     - The first screen of sliders controls the "**input filter**", meaning the content a user enters into the prompt.
     - The subsequent screen of sliders controls the "**output filter**", which is applied to content returned from the LLM.
 1. On the final page, you will be presented with a list of existing model deployments that your content policy can be applied to. Select the row that matches the model in your program's app configuration, then click next. If prompted, click "Replace" to replace the existing default content filtering policy.
 
-    <img src="./Resources/images/filter-deployment-list.png" alt="aoai-filter-deployment-list" width="60%"/>
+    <img src="../Resources/images/filter-deployment-list.png" alt="aoai-filter-deployment-list" width="60%"/>
 
 1. **Test the changes** by running prompts through the model and observing the impact of the filters.
 
@@ -55,12 +55,12 @@ This challenge will guide you through configuring and testing content filters us
 
 1. Return to the **Content filters** tab, then on the resulting screen, click the Blocklists (Preview) tab.
 
-    <img src="./Resources/images/filter-blocklists.png" alt="aoai-filter-deployment-list" width="60%"/>
+    <img src="../Resources/images/filter-blocklists.png" alt="aoai-filter-deployment-list" width="60%"/>
 
 1. Click **Create blocklist**, then enter a name & description *(optional)*.
 1. After you are returned to the list, click the newly created blocklist to access the term list.
 
-    <img src="./Resources/images/filter-blocklist-term.png" alt="aoai-filter-name" width="60%"/>
+    <img src="../Resources/images/filter-blocklist-term.png" alt="aoai-filter-name" width="60%"/>
 
     - Proceed to add a term you would like to be excluded. You could use a random test word like "unicorn", or something more realistic—like "social security number."
     - It also supports using regex to generically filter input that matches a predefined pattern.

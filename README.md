@@ -25,35 +25,35 @@ Participants will learn how to:
 
 ## Challenges
 
-- [Challenge 00](./challenges/Challenge-00.md): Prerequisites
+- Challenge 00: Prerequisites
   - Prepare your workstation to work with Azure.
-- [Challenge 01](./challenges/Challenge-01.md): Azure OpenAI Fundamentals
+- Challenge 01: Azure OpenAI Fundamentals
   - Deploy an Azure OpenAI Model
   - Prompt Engineering
   - What's possible through prompt engineering
   - Best practices when using OpenAI text and chat models
-- [Challenge 02](./challenges/Challenge-02.md): Semantic Kernel Fundamentals
+- Challenge 02(./challenges/Challenge-02.md): Semantic Kernel Fundamentals
   - Semantic Kernel Fundamentals
   - Connect your OpenAI model using Semantic Kernel
   - Test Your Application
-- [Challenge 03](./challenges/Challenge-03.md): Plugins
+- Challenge 03: Plugins
   - Functions and Plugins Fundamentals
   - Creating Semantic Kernel Plugins
   - Enable auto function calling
   - What is a Planner
-- [Challenge 04](./challenges/Challenge-04.md): Import Plugin using OpenAPI
+- Challenge 04: Import Plugin using OpenAPI
   - Import API using OpenAPI Specification into Semantic Kernel
-- [Challenge 05](./challenges/Challenge-05.md): Retrieval-Augmented Generation (RAG)
+- Challenge 05: Retrieval-Augmented Generation (RAG)
   - Document Chunking & Embedding
   - Enhance AI responses by searching external sources
-- [Challenge 06](./challenges/Challenge-06.md): Responsible AI: Exploring Content Filters in Azure OpenAI
+- Challenge 06: Responsible AI: Exploring Content Filters in Azure OpenAI
   - Configuring content filters in Azure OpenAI Studio.
   - Testing content filters.
   - Creating custom filters to block specific words or phrases.
-- [Challenge 07](./challenges/Challenge-07.md): Image Generation using DALL-E
+- Challenge 07: Image Generation using DALL-E
   - Working with Text to Image Models
   - Creating an Image Generating Plugin
-- [Challenge 08](./challenges/Challenge-08.md): Multi-Agent Systems
+- Challenge 08: Multi-Agent Systems
   - Create a multi-agent conversation using Semantic Kernel
   - Implement a multi-agent conversation using Azure OpenAI
   

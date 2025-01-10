@@ -105,7 +105,7 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
     1. Click **Save**.
 
-    ![CORS](./Resources/images/CORS.png)
+    ![CORS](../Resources/images/CORS.png)
 
 ### Use AI Studio to deploy a Text Embedding model
 

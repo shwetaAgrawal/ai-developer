@@ -105,13 +105,13 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
     1. Click **Save**.
 
-    ![CORS](./Resources/images/CORS.png)
+    ![CORS](../Resources/images/CORS.png)
 
 ### Use AI Studio to deploy a Text Embedding model
 
 1. Using [Azure AI Studio](https://ai.azure.com/resource/deployments), deploy a *Standard* **text-embedding-ada-002** model in the same deployment as your previous GPT-4o model. Once deployed, add the **Embedding Deployment Model Name** as a new setting to the **appsettings.json** file in the reference application. You will need this value later when configuring the Semantic Search Plugin.
 
-    ![Embedding Model](./Resources/images/text-embedding-ada-002.png)
+    ![Embedding Model](../Resources/images/text-embedding-ada-002.png)
 
 2. Add the **Embedding Deployment Model Name** to the **appsettings.json** file in the reference application.
 
@@ -125,7 +125,7 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
 1. In Azure OpenAI Studio click on Chat -> Add Your Data -> Add Data Source
 
-    ![Add Data Sournce](./Resources/images/ch05i01.png)
+    ![Add Data Sournce](../Resources/images/ch05i01.png)
 
 1. Select Data Source = ```Upload Files```.
 1. Select the existing Blob Storage resource you created earlier.
@@ -139,13 +139,13 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
 
     > :bulb: The AI Search Index Name will be needed by the reference application
 
-    ![Upload Files](./Resources/images/ch05i02.png)
+    ![Upload Files](../Resources/images/ch05i02.png)
 
 1. Check **Add Vector Search**
 1. Select the **text-embedding-ada-002** model created previously
 1. Click Next
 
-    ![Vector Search](./Resources/images/ch05i03.png)
+    ![Vector Search](../Resources/images/ch05i03.png)
 
 1. Upload the ```employee_handbook.pdf``` from the **.\data** directory and **click Next**
 1. Set the Search type to **Vector** and the Chunk Size to **1024** then **click Next**
@@ -154,11 +154,11 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
   >
   > Choosing the right chunk size is important: if chunks are too large, important details might get lost or diluted in the embedding; if too small, the system might miss out on essential context. The chunk size thus impacts the accuracy and relevance of the information retrieved and subsequently used in generating responses
 
-  ![Chunk Size](./Resources/images/ch05i04.png)
+  ![Chunk Size](../Resources/images/ch05i04.png)
 
 1. Set the Resource Authentication Type to **API Key**
 
-    ![Api Key](./Resources/images/ch05i05.png)
+    ![Api Key](../Resources/images/ch05i05.png)
 
     :repeat: Click **Next** and wait for the import to finish
 
@@ -197,7 +197,7 @@ In this challenge, you will create a Semantic Search Plugin that utilizes an Azu
     ```
 
     The properties on this class map to fields in the AI Search Index we created earlier. In the portal, you can navigate to the AI Search Index and see the fields that are available.
-    ![AI Search](./Resources/images/ch0506.png)
+    ![AI Search](../Resources/images/ch0506.png)
 
     :bulb: Note that the vector field to search is named ```contentVector``` but the sample code from the documentation uses ```vector```, **you will need to update the code to use the correct field name.**
 

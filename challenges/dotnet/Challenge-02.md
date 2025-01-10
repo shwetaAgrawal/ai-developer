@@ -12,7 +12,7 @@ In this challenge, you will be provided with a starter application that will req
 
 ## Prerequisites
 
-1. Complete the [Getting Familiar With the Reference Application](./Resources/Supporting%20Challenges/Challenge-02-Reference-App.md) beginner guide.
+1. Complete the [Getting Familiar With the Reference Application](../Resources/Supporting%20Challenges/Challenge-02-Reference-App.md) beginner guide.
 
 ## Challenges
 
@@ -96,7 +96,7 @@ In this challenge, you will be provided with a starter application that will req
     ```
 
     The response should be similar to the following
-    ![Challenge 02 Image 02](./Resources/images/ch02I02.png)
+    ![Challenge 02 Image 02](../Resources/images/ch02I02.png)
     :bulb: For more information on the Semantic Kernel, refer to the documentation [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/kernel?pivots=programming-language-csharp).
 
 1. Test the Chat History by submitting the following prompt without refreshing the browsing window and clearing the chat history.

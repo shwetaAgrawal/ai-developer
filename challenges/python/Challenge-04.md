@@ -24,10 +24,10 @@ This challenge will introduce you to how to import OpenAPI API as Semantic Kerne
         :exclamation: We have created the API for you to use in this challenge. You can find the OpenAPI spec by going to the swagger webpage from Aspire or starting the API from your local machine.
 
         1. Open Aspire and navigate to the Swagger page.
-        ![Aspire Dashboard](./Resources/images/aspire-api.png)
+        ![Aspire Dashboard](../Resources/images/aspire-api.png)
 
         1. Copy the OpenAPI spec url from the Swagger page.
-        ![Swagger Page](./Resources/images/openapispecurl.png)
+        ![Swagger Page](../Resources/images/openapispecurl.png)
 
         :exclamation: Semantic Kernel SDK for OpenAPI's - your plugin name must be 64 characters or less.
 
