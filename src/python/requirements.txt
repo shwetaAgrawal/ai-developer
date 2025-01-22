@@ -1,2 +1,5 @@
 semantic-kernel
 asyncio
+prompty
+promptflow #required for prompty
+azure-search-documents

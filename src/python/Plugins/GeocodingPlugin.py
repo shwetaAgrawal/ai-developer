@@ -1,6 +1,7 @@
 from typing import TypedDict, Annotated, Optional  
 import requests  
 from semantic_kernel.functions import kernel_function
+import os
 
 from dotenv import load_dotenv
 
